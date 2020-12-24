@@ -1,15 +1,33 @@
 import React, {useState} from "react";
 
-function TodoForm() {
+function TodoForm(props) {
     const [input, setInput] = useState('')
+
+    const handleChange = e => {
+        setInput(e.target.value);
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        props.onsubmit({
+            id: Math.floor(Math.random() * 1000),
+            text: input
+        });
+        setInput('')
+    }
+    // this form below is the input and the button
     return (
-        <form className="todo-form">
+        // added the onsubmit to stop the page from refreshing when you click on the submit button
+        <form className='todo-form' onSubmit={handleSubmit}>
             <input type='text'
                    placeholder='add a todo'
                    value={input}
                    name='text'
                    className='todo-input'
+                   onChange={handleChange}
             />
+            <button className="todo-button"> Add todo</button>
         </form>
     )
 }
