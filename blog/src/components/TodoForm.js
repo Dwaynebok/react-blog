@@ -14,8 +14,8 @@ function TodoForm(props) {
             id: Math.floor(Math.random() * 1000),
             text: input
         });
-        setInput('')
-    }
+        setInput('') //makes the button clickable
+    };
     // this form below is the input and the button
     return (
         // added the onsubmit to stop the page from refreshing when you click on the submit button
